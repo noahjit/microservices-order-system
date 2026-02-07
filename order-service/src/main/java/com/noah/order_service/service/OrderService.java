@@ -5,6 +5,7 @@ import com.noah.order_service.dto.Product;
 import com.noah.order_service.model.Order;
 import com.noah.order_service.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,8 +19,11 @@ public class OrderService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Value("${product.service.url}")
+    private String productServiceUrl;
+
     public Order createOrder(OrderRequest orderRequest) {
-        Product product = restTemplate.getForObject("http://localhost:8081/api/products/" + orderRequest.getProductId(), Product.class);
+        Product product = restTemplate.getForObject(productServiceUrl + "/api/products/" + orderRequest.getProductId(), Product.class);
 
         if (product == null)
             throw new RuntimeException("Product not found");
