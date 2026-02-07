@@ -62,19 +62,19 @@ Order Service will start on `http://localhost:8082`
 
 Then use Postman to test GET and POST requests and outcomes.
 
-## Future Enhancements
+## Docker 
 
-- [ ] Dockerize both services with Dockerfiles
-- [ ] Add docker-compose for one-command startup
-- [ ] Implement Kafka for event-driven communication
-- [ ] Add API documentation with Swagger/OpenAPI
-- [ ] Implement proper exception handling with custom error responses
-- [ ] Add unit and integration tests
-- [ ] Deploy to AWS/Azure
-- [ ] Add monitoring and logging (Spring Boot Actuator, ELK stack)
-- [ ] Implement service discovery (Eureka)
-- [ ] Add API Gateway
+```bash
+docker-compose up --build
+```
 
+Then create a product and order in Postman.
+
+To stop:
+
+```bash
+docker-compose down
+```
 
 ## Author
 
